@@ -1,6 +1,9 @@
 exclude:
+<<<<<<< HEAD
   - server
   - server/node_modules
+=======
+>>>>>>> 9ab06a5384889be59002de2edd538fe92fabc69b
   - node_modules
   - package.json
   - package-lock.json
