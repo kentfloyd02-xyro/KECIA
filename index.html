@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>❤️ KECIA BOOTH</title>
+
+    <link rel="icon" href="data:,">
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Floating Hearts -->
+
+    <div id="heartContainer"></div>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+      <h1>❤️ KeciaBooth</h1>
+
+      <button id="darkMode">❤️</button>
+    </header>
+
+    <!-- ================= ROOM ================= -->
+
+    <section class="room">
+      <input
+        type="text"
+        id="roomCode"
+        placeholder="Enter Room Code (ex: love123)"
+      />
+
+      <button id="joinRoom">Join Room</button>
+    </section>
+
+    <!-- ================= VIDEO ================= -->
+
+    <section class="video-section">
+      <div class="camera-box">
+        <h2>📷 You</h2>
+
+        <video id="localVideo" autoplay muted playsinline></video>
+
+        <div id="countdown" class="countdown-overlay">3</div>
+      </div>
+
+      <div class="camera-box">
+        <h2>❤️ Your Partner</h2>
+
+        <video id="remoteVideo" autoplay playsinline></video>
+
+        <div id="countdownRemote" class="countdown-overlay">3</div>
+      </div>
+    </section>
+
+    <!-- ================= CONTROLS ================= -->
+
+    <section class="controls">
+      <button id="openCamera">📷 Open Camera</button>
+
+      <button id="switchCamera">🔄 Switch Camera</button>
+      <button id="toggleMic">🎤 Mic</button>
+
+      <button id="toggleCamera">📷 Camera</button>
+
+      <button id="startCall">📞 Start Call</button>
+
+      <button id="endCall">📵 End Call</button>
+
+      <button id="capture">📸 Capture</button>
+
+      <button id="retake">🔄 Retake</button>
+
+      <button id="download">💾 Download</button>
+
+      <button id="save">💾 Save</button>
+
+      <button id="sendHeart">❤️ Send Love</button>
+    </section>
+
+    <!-- ================= CANVAS ================= -->
+
+    <section class="capture-preview">
+      <h2>📸 Capture Preview</h2>
+      <canvas id="canvas" width="1280" height="720"></canvas>
+    </section>
+
+    <!-- ================= BACKGROUNDS ================= -->
+
+    <section class="backgrounds">
+      <h2>🌸 Romantic Backgrounds</h2>
+
+      <div class="bg-grid">
+        <div class="bg-card" data-bg="beach.jpg">
+          🏖
+
+          <p>Beach</p>
+        </div>
+
+        <div class="bg-card" data-bg="sunset.jpg">
+          🌇
+
+          <p>Sunset</p>
+        </div>
+
+        <div class="bg-card" data-bg="sakura.jpg">
+          🌸
+
+          <p>Sakura</p>
+        </div>
+
+        <div class="bg-card" data-bg="cafe.jpg">
+          ☕
+
+          <p>Cafe</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FRAMES ================= -->
+
+    <section class="frames">
+      <h2>🎞️ Frame Styles</h2>
+
+      <div class="frame-grid">
+        <div class="frame-card active" data-frame="classic">
+          <div class="frame-preview classic"></div>
+          <p>Classic</p>
+        </div>
+
+        <div class="frame-card" data-frame="gold">
+          <div class="frame-preview gold"></div>
+          <p>Golden</p>
+        </div>
+
+        <div class="frame-card" data-frame="blush">
+          <div class="frame-preview blush"></div>
+          <p>Blush</p>
+        </div>
+
+        <div class="frame-card" data-frame="minimal">
+          <div class="frame-preview minimal"></div>
+          <p>Minimal</p>
+        </div>
+
+        <div class="frame-card" data-frame="neon">
+          <div class="frame-preview neon"></div>
+          <p>Neon</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+
+    <section class="gallery">
+      <h2>❤️ Memories</h2>
+
+      <div id="galleryContainer"></div>
+    </section>
+
+    <!-- ================= IMAGE MODAL ================= -->
+
+    <div id="imageModal" class="modal">
+      <img id="previewImage" alt="Preview" />
+    </div>
+
+    <!-- ================= LOADER ================= -->
+
+    <div class="loader hidden"></div>
+
+    <!-- ================= TOAST ================= -->
+
+    <div class="toast"></div>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>Made with ❤️ by KENTLOYD ALBIOS</footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <!-- Socket.IO CDN -->
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+
+    <!-- Core Files -->
+    <script src="js/main.js"></script>
+
+    <!-- WebRTC first -->
+    <script src="js/call.js"></script>
+
+    <!-- Camera after WebRTC -->
+    <script src="js/camera.js"></script>
+
+    <!-- Features -->
+    <script src="js/countdown.js"></script>
+
+    <script src="js/capture.js"></script>
+
+    <script src="js/gallery.js"></script>
+
+    <script src="js/backgrounds.js"></script>
+
+    <script src="js/download.js"></script>
+
+    <script src="js/hearts.js"></script>
+  </body>
+</html>
