@@ -83,7 +83,7 @@ io.on("connection", (socket) => {
 
             "offer",
 
-            data.offer
+            data
 
         );
 
@@ -99,7 +99,7 @@ io.on("connection", (socket) => {
 
             "answer",
 
-            data.answer
+            data
 
         );
 
@@ -115,7 +115,7 @@ io.on("connection", (socket) => {
 
             "ice-candidate",
 
-            data.candidate
+            data
 
         );
 

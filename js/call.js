@@ -322,46 +322,33 @@ startCallBtn.addEventListener(
 "click",
 async()=>{
 
-
     if(!roomCode){
-
         alert(
             "Join room first"
         );
-
         return;
-
     }
 
-
+    console.log("📞 Starting call for room:", roomCode);
 
     await createPeerConnection();
 
-
-
     const offer =
         await peerConnection.createOffer();
-
-
 
     await peerConnection.setLocalDescription(
         offer
     );
 
-
-
     socket.emit(
         "offer",
         {
-
-            room:roomCode,
-
-            offer:offer
-
+            room: roomCode,
+            offer: offer
         }
-
     );
 
+    console.log("📤 Offer sent");
 
 });
 
@@ -375,42 +362,34 @@ async()=>{
 
 socket.on(
 "offer",
-async(offer)=>{
+async(data)=>{
 
+    const { room, offer } = data;
+
+    roomCode = room;
+
+    console.log("📩 Offer received for room:", roomCode);
 
     await createPeerConnection();
-
-
 
     await peerConnection.setRemoteDescription(
         new RTCSessionDescription(offer)
     );
 
-
-
     const answer =
         await peerConnection.createAnswer();
-
-
 
     await peerConnection.setLocalDescription(
         answer
     );
 
-
-
     socket.emit(
         "answer",
         {
-
-            room:roomCode,
-
-            answer:answer
-
+            room: roomCode,
+            answer: answer
         }
-
     );
-
 
 });
 
@@ -422,18 +401,24 @@ async(offer)=>{
 
 socket.on(
 "answer",
-async(answer)=>{
+async(data)=>{
 
+    const { room, answer } = data;
+
+    console.log("📩 Answer received for room:", room);
+
+    if (!peerConnection) {
+        console.warn("No peer connection available to set remote answer.");
+        return;
+    }
 
     await peerConnection.setRemoteDescription(
         new RTCSessionDescription(answer)
     );
 
-
     console.log(
         "❤️ Connected"
     );
-
 
 });
 
@@ -445,19 +430,17 @@ async(answer)=>{
 
 socket.on(
 "ice-candidate",
-async(candidate)=>{
+async(data)=>{
 
+    const { room, candidate } = data;
+
+    console.log("🧊 ICE candidate received for room:", room);
 
     if(peerConnection){
-
-
         await peerConnection.addIceCandidate(
             new RTCIceCandidate(candidate)
         );
-
-
     }
-
 
 });
 
