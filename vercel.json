@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "buildCommand": "echo 'Frontend deployment complete'",
+  "outputDirectory": "./",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
