@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "buildCommand": "echo 'Build complete'",
+  "public": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
